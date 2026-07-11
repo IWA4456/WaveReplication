@@ -1,5 +1,10 @@
 --Discord: _iwa.  Roblox: Thuglife09877
 
+-- Server-side wave system: spawns groups of enemies around a target,
+-- steers them with spatial-hash-based separation, tracks health/status per
+-- player via Charm, and replicates positions to clients over Blink using a
+-- fixed-point buffer encoding.
+
 --[[
 	╔══════════════════════════════════════════════════════════════════════╗
 	║                          TABLE OF CONTENTS                           ║
