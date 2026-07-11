@@ -1,0 +1,19 @@
+-- these can be ignored if you are using the studio plugin
+option ClientOutput = "src/client/StateFlow/StateBlink.luau"
+option ServerOutput = "src/server/StateFlow/StateBlink.luau"
+
+struct InitMap  {Keys: string[],Values: map {[string]: unknown}  }
+
+ 
+event FlowSync {
+    From: Server,
+    Call: SingleSync,Type: Reliable,Data: unknown
+}
+
+event FlowInit {
+    From: Server, Call: SingleAsync, Type: Reliable, Data: InitMap
+}
+
+event FlowReady {
+    From: Client,Call: SingleAsync, Type: Reliable
+}

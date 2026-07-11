@@ -1,0 +1,10 @@
+[package]
+name = "remy3/wavereplication"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+Charm = "littensy/charm@0.11.0"
+CharmSync = "littensy/charm-sync@0.4.0"
+Vide = "centau/vide@0.4.0"

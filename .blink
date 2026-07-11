@@ -1,0 +1,24 @@
+-- these can be ignored if you are using the studio plugin
+option ClientOutput = "src/client/Blink.luau"
+option ServerOutput = "src/server/Blink.luau"
+ 
+event UnreliableSync {
+    from: Server,
+    Type: Unreliable,
+    call: SingleAsync,
+    data: buffer(..900)
+}
+
+event WaveRequest {
+    From: Client,
+    Type: Reliable,
+    Call: SingleAsync
+}
+
+event Sync {
+    From: Server,Type: Reliable, Call: SingleAsync,Data: unknown
+}
+
+event PlayerReady {
+    From: Client,Call: ManyAsync,Type: Reliable
+}
