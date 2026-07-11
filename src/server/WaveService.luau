@@ -2,26 +2,26 @@
 
 --[[
 	╔══════════════════════════════════════════════════════════════════════╗
-	║                          TABLE OF CONTENTS                            ║
+	║                          TABLE OF CONTENTS                           ║
 	╠══════════════════════════════════════════════════════════════════════╣
-	║  Chapter 1 : Utils                                                     ║
-	║    - Array/Map helpers        -> PopRandom, IsEmpty                   ║
-	║    - Spatial hashing grid     -> GetKey, buildGrid, GetNeighbors       ║
-	║    - Steering math            -> GetPushFromNeighbors,                ║
-	║                                   GetPushFromTarget,                   ║
-	║                                   ApplyVelocityFromTarget              ║
-	║    - Wave layout generation   -> CreateCrowdPos, ChooseSide, BuildWave ║
-	║                                                                        ║
-	║  Chapter 2 : Entity                                                    ║
-	║    - Per-enemy state (no Humanoid) and velocity integration           ║
-	║                                                                        ║
-	║  Chapter 3 : WaveState                                                 ║
-	║    - Per-player wave lifecycle (one instance per Player)              ║
-	║    - Charm atoms for Health/Status/TargetPosition                     ║
-	║    - Buffer-based position replication (fixed-point i16 encoding)     ║
-	║                                                                        ║
-	║  Chapter 4 : WaveService                                               ║
-	║    - Orchestrates WaveState per player, wires Blink + CharmSync        ║
+	║  Chapter 1 : Utils                                                   ║
+	║    - Array/Map helpers        -> PopRandom, IsEmpty                  ║
+	║    - Spatial hashing grid     -> GetKey, buildGrid, GetNeighbors     ║
+	║    - Steering math            -> GetPushFromNeighbors,               ║
+	║                                   GetPushFromTarget,                 ║
+	║                                   ApplyVelocityFromTarget            ║
+	║    - Wave layout generation   -> CreateCrowdPos,ChooseSide,BuildWave ║
+	║                                                                      ║
+	║  Chapter 2 : Entity                                                  ║
+	║    - Per-enemy state (no Humanoid) and velocity integration          ║
+	║                                                                      ║
+	║  Chapter 3 : WaveState                                               ║
+	║    - Per-player wave lifecycle (one instance per Player)             ║
+	║    - Charm atoms for Health/Status/TargetPosition                    ║
+	║    - Buffer-based position replication (fixed-point i16 encoding)    ║
+	║                                                                      ║
+	║  Chapter 4 : WaveService                                             ║
+	║    - Orchestrates WaveState per player, wires Blink + CharmSyn       ║
 	╚══════════════════════════════════════════════════════════════════════╝
 ]]
 
