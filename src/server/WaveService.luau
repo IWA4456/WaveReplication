@@ -1,4 +1,4 @@
---Discord: .iwa_ Roblox: Thuglife09877
+--Discord: _iwa. Roblox: Thuglife09877
 
 -- This is a server-side wave replication script. This script is meant to spawn waves targeting a core that is specific to each player in their plots.
 -- This script is a condensed version of another script. It was condensed by removing scalability aspects such as PlotService, a Wave Maker and an entity info list.
@@ -705,6 +705,7 @@ end
 -- ╔═══════════════════════════╗
 -- ║  Chapter 4 : WaveService  ║
 -- ╚═══════════════════════════╝
+-- This part is for the main Service of the script
 
 local WaveService = {}
 
@@ -718,6 +719,7 @@ type WaveService = WaveService_Method & {
 -- ║  WaveService : Initialization & End of life  ║
 -- ╚══════════════════════════════════════════════╝
 
+--If I dont do this, the type checker is angry at me
 function WaveService:Init()
 	return self:Build()
 end
@@ -738,7 +740,7 @@ function WaveService.Build(self: WaveService)
 		self:InitPlr(plr)
 	end)
 
-	CharmSync.config.fixArrays = false
+	CharmSync.config.fixArrays = false -- Im using a networking library(blink), I have to set it to false
 	CharmSync.server.connect(function(client: Player, payloads)
 		Blink.Sync.Fire(client, payloads)
 	end)
@@ -784,7 +786,7 @@ end
 -- ╔═════════════════════════╗
 -- ║  WaveService : Handler  ║
 -- ╚═════════════════════════╝
-
+-- we start a wave when requested, we cannot start the wave if the Status isn't "None"
 function WaveService.HandleRequest(self: WaveService, plr: Player)
 	local state = self.WaveState[plr]
 
@@ -795,6 +797,8 @@ function WaveService.HandleRequest(self: WaveService, plr: Player)
 	state:StartWave(waveHolder)
 end
 
+-- We add some effect when the status has changed, When the status is "Completed" we switch it to None after 1 sec
+-- When "None", I reset the wave for the next wave,
 function WaveService.HandleState(self: WaveService, plr: Player, status: number)
 	local state = self.WaveState[plr]
 
@@ -814,7 +818,7 @@ end
 -- ╔══════════════════════════════════╗
 -- ║  WaveService : External Methods  ║
 -- ╚══════════════════════════════════╝
-
+-- If we want to add some effect to a wave Completion, we call this method
 function WaveService.SubscribeToCompleted(self: WaveService, plr: Player, callback: () -> ())
 	if not self.WaveState[plr] then
 		self:InitPlr(plr)
@@ -822,7 +826,7 @@ function WaveService.SubscribeToCompleted(self: WaveService, plr: Player, callba
 
 	table.insert(self.OnCompleted[plr], callback)
 end
-
+-- For external services, mainly used to call the ApplyDamage and GetEntitiesPos
 function WaveService.GetState(self: WaveService, plr: Player): WaveState
 	if not self.WaveState[plr] then
 		self:InitPlr(plr)
